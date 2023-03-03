@@ -9,21 +9,19 @@ public class RestTests extends TestBase {
 
     @Test
     void createNewUser() {
-
         given()
                 .when()
                 .body(createUserBody)
-                .post(baseUrl + listOfUsers)
+                .post(baseUrl + createUser)
                 .then()
                 .statusCode(201)
                 .log().body()
-                .extract().response();
-        ;
+                .extract().path("id")
+                ;
     }
 
     @Test
     void updateUser() {
-
         given()
                 .when()
                 .body(updateUserBody)
@@ -36,7 +34,6 @@ public class RestTests extends TestBase {
 
     @Test
     void deleteUser() {
-
         given()
                 .when()
                 .delete(baseUrl + deleteUser)

@@ -16,8 +16,7 @@ public class RestTests extends TestBase {
                 .then()
                 .statusCode(201)
                 .log().body()
-                .extract().path("id")
-                ;
+                .extract().path("id");
     }
 
     @Test

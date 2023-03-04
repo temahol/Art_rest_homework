@@ -1,9 +1,11 @@
 import helpers.TestBase;
+import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.hasItems;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 public class RestTests extends TestBase {
 
@@ -16,7 +18,8 @@ public class RestTests extends TestBase {
                 .then()
                 .statusCode(201)
                 .log().body()
-                .extract().path("id");
+                .body("$", hasKey("id"))
+                .body("$", hasKey("createdAt"));
     }
 
     @Test
@@ -28,7 +31,7 @@ public class RestTests extends TestBase {
                 .then()
                 .statusCode(200)
                 .log().all()
-                .extract().response();
+                .body("$", hasKey("updatedAt"));
     }
 
     @Test
@@ -38,8 +41,7 @@ public class RestTests extends TestBase {
                 .delete(baseUrl + deleteUser)
                 .then()
                 .statusCode(204)
-                .log().all()
-                .extract().response();
+                .log().all();
     }
 
     @Test

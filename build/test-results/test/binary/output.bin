@@ -1,4 +1,13 @@
-{
-    "id": "653",
-,    "createdAt": "2023-03-02T21:45:09.776Z"
-}
+HTTP/1.1 204 No Content
+%Date: Sat, 04 Mar 2023 22:39:54 GMT
+Content-Length: 0
+Connection: keep-alive
+X-Powered-By: Express
+ Access-Control-Allow-Origin: *
+)Etag: W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"
+Via: 1.1 vegur
+CF-Cache-Status: DYNAMIC
+„Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=a5tCJnDDXC9za8%2BAA05SYOlYn4A2eYlN%2FFViGriWO%2Fwus3ZL6dGsdZhJ5y%2BV8K822CA2TWblqtpmAKF3ZFdsMQwzOQle0yUbX19OqJE62%2F%2BTXO%2FgPCyKaJxv8Q%3D%3D"}],"group":"cf-nel","max_age":604800}
+CNEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Server: cloudflare
+CF-RAY: 7a2d9e2bbfcbbc1b-VNO

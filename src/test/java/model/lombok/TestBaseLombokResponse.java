@@ -8,5 +8,7 @@ public class TestBaseLombokResponse {
 
     public String id;
     public String createdAt;
+    public String total_pages;
+
 
 }

@@ -3,40 +3,39 @@ import io.restassured.response.Response;
 import model.lombok.TestBaseLombok;
 import model.lombok.TestBaseLombokResponse;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.hamcrest.Matchers.*;
 import static helpers.CustomAllureListener.withCustomTemplates;
+import static specs.Specs.*;
 
 public class RestTests {
 
     @Test
+    @Tag("homework")
     void createNewUser() {
 
         TestBaseLombok testLombok = new TestBaseLombok();
-        testLombok.setCreateUser(testLombok.createUserBody);
         testLombok.setBaseUrl(testLombok.baseUrl);
+        testLombok.setCreateUserBody(testLombok.createUserBody);
         testLombok.setCreateUser(testLombok.createUser);
 
-        TestBaseLombokResponse lombokResponse = given()
-                .filter(withCustomTemplates())
-                .when()
+        step("create new user", () ->
+        given(requestSpec)
                 .body(testLombok.createUserBody)
-                .post(testLombok.baseUrl + testLombok.createUser)
+                .post(testLombok.createUser)
                 .then()
-                .statusCode(201)
-                .log().body()
-                .body("$", hasKey("id"))
-                .body("$", hasKey("createdAt"))
-                .extract().as(TestBaseLombokResponse.class);
+                .spec(responseSpec)
+        );
 
-        assertThat(lombokResponse.getId()).isNotNull();
-        assertThat(lombokResponse.getCreatedAt()).isNotNull();
     }
 
     @Test
+    @Tag("homework")
     void updateUser() {
 
         TestBaseLombok testLombok = new TestBaseLombok();
@@ -44,67 +43,58 @@ public class RestTests {
         testLombok.setBaseUrl(testLombok.baseUrl);
         testLombok.setPutUpdateUser(testLombok.putUpdateUser);
 
-        given()
-                .filter(withCustomTemplates())
-                .when()
+        step("update user by put method", () ->
+                given(requestSpec)
                 .body(testLombok.updateUserBody)
-                .put(testLombok.baseUrl  + testLombok.putUpdateUser)
+                .put(testLombok.putUpdateUser)
                 .then()
-                .statusCode(200)
-                .log().all()
-                .body("$", hasKey("updatedAt"));
+                        .spec(responseUpdateSpec));
     }
 
     @Test
+    @Tag("homework")
     void deleteUser() {
 
         TestBaseLombok testLombok = new TestBaseLombok();
         testLombok.setBaseUrl(testLombok.baseUrl);
         testLombok.setDeleteUser(testLombok.deleteUser);
 
-        given()
-                .filter(withCustomTemplates())
-                .when()
-                .delete(testLombok.baseUrl + testLombok.deleteUser)
+        step("delete created user", () ->
+        given(requestSpec)
+                .delete( testLombok.deleteUser)
                 .then()
-                .statusCode(204)
-                .log().all();
+                .spec(responseDeleteSpec));
     }
 
     @Test
+    @Tag("homework")
     void checkTotal() {
 
         TestBaseLombok testLombok = new TestBaseLombok();
         testLombok.setBaseUrl(testLombok.baseUrl);
         testLombok.setListOfUsers(testLombok.listOfUsers);
 
-        given()
-                .filter(withCustomTemplates())
-                .when()
-                .get(testLombok.baseUrl + testLombok.listOfUsers)
+        step("check total pages in response", () ->
+        given(requestSpec)
+                .get(testLombok.listOfUsers)
                 .then()
-                .statusCode(200)
-                .log().all()
-                .assertThat()
-                .body("total_pages", is(2));
+                .spec(responseTotalSpec));
     }
 
     @Test
+    @Tag("homework")
     void checkAllLastNames() {
 
         TestBaseLombok testLombok = new TestBaseLombok();
         testLombok.setBaseUrl(testLombok.baseUrl);
         testLombok.setListOfUsers(testLombok.listOfUsers);
 
-        given()
-                .filter(withCustomTemplates())
-                .when()
-                .get(testLombok.baseUrl + testLombok.listOfUsers)
+        step("check all last names of users", () ->
+        given(requestSpec)
+                .get(testLombok.listOfUsers)
                 .then()
-                .statusCode(200)
-                .log().all()
-                .assertThat()
-                .body("data.last_name", hasItems("Lawson", "Ferguson", "Funke", "Fields", "Edwards", "Howell"));
+                .spec(responseLastNamesSpec)
+                .body("data.last_name",
+                        hasItems("Lawson", "Ferguson", "Funke", "Fields", "Edwards", "Howell")));
     }
-
 }

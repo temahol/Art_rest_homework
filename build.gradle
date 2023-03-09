@@ -38,3 +38,14 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
+}
+
+task Art_rest_homework(type: Test) {
+    useJUnitPlatform {
+        includeTags("homework")
+    }
+}

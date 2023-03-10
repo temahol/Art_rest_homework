@@ -1,79 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="RestTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-09T21:44:40" hostname="DESKTOP-T1L377U" time="4.205">
+<testsuite name="RestTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-10T22:23:33" hostname="DESKTOP-T1L377U" time="4.769">
   <properties/>
-  <testcase name="checkAllLastNames()" classname="RestTests" time="4.205"/>
-  <system-out><![CDATA[HTTP/1.1 200 OK
-Date: Thu, 09 Mar 2023 21:44:43 GMT
-Content-Type: application/json; charset=utf-8
-Transfer-Encoding: chunked
-Connection: keep-alive
-X-Powered-By: Express
-Access-Control-Allow-Origin: *
-Etag: W/"406-ut0vzoCuidvyMf8arZpMpJ6ZRDw"
-Via: 1.1 vegur
-Cache-Control: max-age=14400
-CF-Cache-Status: HIT
-Age: 3646
-Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=6qRDFtxfKWO%2BV2S7x1wokxEioTJoTK345N80JE8ufKjD5ezul2So5e6JS%2BfOLQ99Tpvz6ndrDQIgN0VWckTe4KFVXCgQbInrONypsQuPGGyEsohRaQllDFU%2Fcg%3D%3D"}],"group":"cf-nel","max_age":604800}
-NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
-Vary: Accept-Encoding
-Server: cloudflare
-CF-RAY: 7a5680379c98ffe8-VNO
-Content-Encoding: gzip
-
-{
-    "page": 2,
-    "per_page": 6,
-    "total": 12,
-    "total_pages": 2,
-    "data": [
-        {
-            "id": 7,
-            "email": "michael.lawson@reqres.in",
-            "first_name": "Michael",
-            "last_name": "Lawson",
-            "avatar": "https://reqres.in/img/faces/7-image.jpg"
-        },
-        {
-            "id": 8,
-            "email": "lindsay.ferguson@reqres.in",
-            "first_name": "Lindsay",
-            "last_name": "Ferguson",
-            "avatar": "https://reqres.in/img/faces/8-image.jpg"
-        },
-        {
-            "id": 9,
-            "email": "tobias.funke@reqres.in",
-            "first_name": "Tobias",
-            "last_name": "Funke",
-            "avatar": "https://reqres.in/img/faces/9-image.jpg"
-        },
-        {
-            "id": 10,
-            "email": "byron.fields@reqres.in",
-            "first_name": "Byron",
-            "last_name": "Fields",
-            "avatar": "https://reqres.in/img/faces/10-image.jpg"
-        },
-        {
-            "id": 11,
-            "email": "george.edwards@reqres.in",
-            "first_name": "George",
-            "last_name": "Edwards",
-            "avatar": "https://reqres.in/img/faces/11-image.jpg"
-        },
-        {
-            "id": 12,
-            "email": "rachel.howell@reqres.in",
-            "first_name": "Rachel",
-            "last_name": "Howell",
-            "avatar": "https://reqres.in/img/faces/12-image.jpg"
-        }
-    ],
-    "support": {
-        "url": "https://reqres.in/#support-heading",
-        "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
-    }
+  <testcase name="updateUser()" classname="RestTests" time="4.769"/>
+  <system-out><![CDATA[{
+    "updatedAt": "2023-03-10T22:23:35.668Z"
 }
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

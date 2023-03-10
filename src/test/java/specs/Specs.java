@@ -1,11 +1,8 @@
 package specs;
 
 import io.restassured.builder.ResponseSpecBuilder;
-import io.restassured.filter.log.LogDetail;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import model.lombok.TestBaseLombok;
-
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
 import static io.restassured.filter.log.LogDetail.ALL;
@@ -14,12 +11,10 @@ import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class Specs {
-    static TestBaseLombok testLombok = new TestBaseLombok();
 
     public static RequestSpecification requestSpec = with()
             .filter(withCustomTemplates())
-            .when()
-            .baseUri(testLombok.baseUrl);
+            .baseUri("https://reqres.in");
 
     public static ResponseSpecification responseSpec = new ResponseSpecBuilder()
             .log(BODY)
